@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.contain {
+    width: 100%;
+    min-height: 300px;
+    /* background-color: aqua; */
+}
+
+#tableMain tr {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#tableMain tr th,
+#tableMain tr td {
+    flex: 1;
+}
+
+#tableMain tr input {
+    width: 80%;
+}
+
+.operate {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.operate button {
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}

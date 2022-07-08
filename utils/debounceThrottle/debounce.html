@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input class="inp" type="text" />
+    <script>
+        let inpDom = document.querySelector(".inp");
+        inpDom.oninput = debounce(function(){
+            console.log(this.value);
+        }, 500);
+
+        /***
+         * @decription 防抖函数--- 用户触发事件过于频繁，控制事件函数只执行最后一次
+         * @param {Function} fn 传入的主体函数
+         * @param {String} delay 延迟时间
+         * 
+        */
+        function debounce(fn, delay) {
+            let t = null;
+            return function(){
+                if(t!==null){
+                    clearTimeout(t);
+                }
+                t=setTimeout(()=>{
+                    fn.call(this);
+                }, delay);
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

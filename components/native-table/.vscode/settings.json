@@ -1,0 +1,78 @@
+{
+    "files.associations": {
+      "*.cjson": "jsonc",
+      "*.wxss": "css",
+      "*.wxs": "javascript",
+      "*.vue": "vue"
+    },
+    "emmet.includeLanguages": {
+      "wxml": "html"
+    },
+    "minapp-vscode.disableAutoConfig": true,
+    "workbench.activityBar.visible": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vetur.format.defaultFormatter.html": "prettier",
+    "editor.fontWeight": "bold",
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "vetur.validation.template": false,
+    "files.exclude": {
+      "**/.git": false
+    },
+    "eslint.validate": [
+      "javascript",
+      "html",
+      "vue"
+    ],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "breadcrumbs.enabled": true,
+    "editor.minimap.enabled": true,
+    "minapp-vscode.prettier": {
+      "prettier.requireConfig": true,
+      "editor.formatOnSave": true,
+      "useTabs": false,
+      "tabWidth": 2,
+      "printWidth": 100,
+      "singleQuote": true
+    },
+    "json.schemas": [],
+    "eslint.codeAction.showDocumentation": {
+      "enable": true
+    },
+    "vetur.format.defaultFormatterOptions": {
+      "js-beautify-html": {
+        "wrap_attributes": "force-expand-multiline"
+      },
+      "prettyhtml": {
+        "printWidth": 100,
+        "singleQuote": false,
+        "wrapAttributes": false,
+        "sortAttributes": false
+      }
+    },
+    "eslint.nodeEnv": "",
+    "todo-tree.tree.showScanModeButton": false,
+    "vue-helper.alias": {
+      "@": "./src"
+    },
+    "[json]": {
+      "editor.quickSuggestions": {
+        "strings": true
+      },
+      "editor.suggest.insertMode": "replace",
+      "gitlens.codeLens.scopes": [
+        "document"
+      ]
+    },
+    "path-intellisense.mappings": {
+      "@": "${workspaceRoot}/src"
+    },
+    "eslint.trace.server": null,
+  }
