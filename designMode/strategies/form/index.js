@@ -1,4 +1,6 @@
-let registerFormDom = document.querySelector("#regiterForm");
+let registerFormDom = document.querySelector("#regiterForm"),
+    userNameDom = document.querySelector("#userName"),
+    passWordDom = document.querySelector("#passWord");
 let strategies = {
     nonEmpty: function(value, errMsg) {
         if (value === "") {
@@ -11,32 +13,32 @@ let strategies = {
         }
     },
 };
-let validatorFunc = function() {
-    let validObj = new Validate();
-    validObj.add(registerFormDom.querySelector("#userName"), [{
+let validateFunc = function() {
+    let validClass = new Validator();
+    validClass.add(userNameDom, [{
         strage: "nonEmpty",
         errMsg: "用户名不能为空",
     }, ]);
-    validObj.add(registerFormDom.querySelector("#passWord"), [{
+    validClass.add(passWordDom, [{
             strage: "nonEmpty",
             errMsg: "密码不能为空",
         },
         {
-            strage: "minLength:8",
-            errMsg: "密码至少输入8位以上",
+            strage: "minLength:9",
+            errMsg: "密码至少输入9位以上",
         },
     ]);
-    let returnErrMsg = validObj.start();
-    if (returnErrMsg) return returnErrMsg;
+    let err = validClass.start();
+    if (err) return err;
 };
 registerFormDom.onsubmit = function() {
-    let err = validatorFunc();
-    if (err) {
-        console.log(err);
+    let returnErrMsg = validateFunc();
+    if (returnErrMsg) {
+        console.log(returnErrMsg);
         return false;
     }
 };
-class Validate {
+class Validator {
     constructor() {
         this.catch = [];
     }
@@ -47,20 +49,21 @@ class Validate {
             (function(rule) {
                 self.catch.push(function() {
                     let arr = [],
-                        stageType = "";
+                        type = "";
                     arr = rule.strage.split(":");
-                    stageType = arr.shift();
+                    type = arr.shift();
                     arr.unshift(dom.value);
                     arr.push(rule.errMsg);
-                    return strategies[stageType].apply(dom, arr);
+
+                    return strategies[type].apply(dom, arr);
                 });
             })(rule);
         }
     }
     start() {
-        for (let i = 0, validFunc;
-            (validFunc = this.catch[i++]);) {
-            let err = validFunc();
+        for (let i = 0, validfunc;
+            (validfunc = this.catch[i++]);) {
+            let err = validfunc();
             if (err) return err;
         }
     }
