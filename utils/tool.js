@@ -1,35 +1,13 @@
 /**
- * @description  判断地址栏参数并判断参数中是否有非法字符
- * @param {String} temp_str
+ * @description 转换为字符串
+ * @param {String} val
  */
-export function judgeUrlParamIsRule(temp_str) {
-    temp_str = trimTxt(temp_str);
-    temp_str = temp_str.replace("*", "@");
-    temp_str = temp_str.replace("--", "@");
-    temp_str = temp_str.replace("/", "@");
-    temp_str = temp_str.replace("+", "@");
-    temp_str = temp_str.replace("'", "@");
-    temp_str = temp_str.replace("\\", "@");
-    temp_str = temp_str.replace("$", "@");
-    temp_str = temp_str.replace("^", "@");
-    temp_str = temp_str.replace(".", "@");
-    temp_str = temp_str.replace(";", "@");
-    temp_str = temp_str.replace("<", "@");
-    temp_str = temp_str.replace(">", "@");
-    temp_str = temp_str.replace('"', "@");
-    temp_str = temp_str.replace("=", "@");
-    temp_str = temp_str.replace("{", "@");
-    temp_str = temp_str.replace("}", "@");
-
-    let forbid_str = new String("@,%,~,&");
-    let forbid_array = new Array();
-    forbid_array = forbid_str.split(",");
-
-    for (let i = 0; i < forbid_array.length; i++) {
-        if (temp_str.search(new RegExp(forbid_array[i])) != -1) return false;
-    }
-
-    return true;
+export function toString(val) {
+    return val == null ?
+        "" :
+        typeof val === "object" ?
+        JSON.stringify(val) :
+        String(val);
 }
 
 /**
@@ -361,3 +339,37 @@ export const GetQueryString = (name) => {
     if (r != null) return unescape(r[2]);
     return null;
 };
+
+/**
+ * @description  判断地址栏参数并判断参数中是否有非法字符
+ * @param {String} temp_str
+ */
+export function judgeUrlParamIsRule(temp_str) {
+    temp_str = trimTxt(temp_str);
+    temp_str = temp_str.replace("*", "@");
+    temp_str = temp_str.replace("--", "@");
+    temp_str = temp_str.replace("/", "@");
+    temp_str = temp_str.replace("+", "@");
+    temp_str = temp_str.replace("'", "@");
+    temp_str = temp_str.replace("\\", "@");
+    temp_str = temp_str.replace("$", "@");
+    temp_str = temp_str.replace("^", "@");
+    temp_str = temp_str.replace(".", "@");
+    temp_str = temp_str.replace(";", "@");
+    temp_str = temp_str.replace("<", "@");
+    temp_str = temp_str.replace(">", "@");
+    temp_str = temp_str.replace('"', "@");
+    temp_str = temp_str.replace("=", "@");
+    temp_str = temp_str.replace("{", "@");
+    temp_str = temp_str.replace("}", "@");
+
+    let forbid_str = new String("@,%,~,&");
+    let forbid_array = new Array();
+    forbid_array = forbid_str.split(",");
+
+    for (let i = 0; i < forbid_array.length; i++) {
+        if (temp_str.search(new RegExp(forbid_array[i])) != -1) return false;
+    }
+
+    return true;
+}
